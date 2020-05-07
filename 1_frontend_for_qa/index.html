@@ -3,53 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
-<style>
-
-    #logo {
-        color: red;
-        height: 100px;
-        width: 100px;
-        text-align: center;
-        border: 1px black solid;
-    }
-
-    #logo > span {
-        position: relative;
-        vertical-align: middle;
-        font-size: 40px;
-        line-height: 100px;
-    }
-
-    .invisible {
-        visibility: hidden;
-    }
-
-    .not-displayed {
-        display: none;
-    }
-
-    .hide {
-        opacity: 0;
-    }
-
-
-
-</style>
 
 <body>
 
@@ -57,26 +15,71 @@
     <div id="logo">
         <span>~L~</span>
     </div>
-</header>
-
-<header>
+    <div id="logo">
+        <span>~L~</span>
+    </div>
     <div id="logo">
         <span>~L~</span>
     </div>
 </header>
 
-<header>
-    <div id="logo">
-        <span>~L~</span>
-    </div>
-</header>
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
 
-<h1>Header</h1>
-<!-- https://www.w3schools.com/jsref/prop_style_visibility.asp -->
-<div class="invisible">I'm invisible!</div>
-<div class="not-displayed">I'm not displayed!</div>
-<div class="hide">I'm hidden!</div>
-<p>This link is very important: <span><a href="https://ya.ru">link</a></span></p>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Header</h1>
+    <!-- https://www.w3schools.com/jsref/prop_style_visibility.asp -->
+    <button class="invisible btn btn-info">I'm invisible!</button>
+
+    <button class="not-displayed btn btn-warning">I'm not displayed!</button>
+
+    <button class="hide button">I'm hidden!</button>
+
+    <button class="hide btn btn-warning" disabled>Disabled</button>
+
+    <p>This link is very important: <span><a href="https://ya.ru">link</a></span></p>
+
+</div>
+
+
+<div id="demo">
+    <button type="button" onclick="loadXMLDoc()">Change Content</button>
+</div>
+
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        <tr>
+            <td>Spider Man</td>
+            <td>pieter.parker@example.com</td>
+            <td>212-00-546</td>
+        </tr>
+        <tr>
+            <td>Batman</td>
+            <td>bruce.vayne@gotham.com</td>
+            <td>123-45-678</td>
+        </tr>
+        <tr>
+            <td>Dart Vader</td>
+            <td>anakyn.skywalker@mail.com</td>
+            <td>123-45-678</td>
+        </tr>
+    </table>
+</div>
+
 
 <footer style="margin-top:10px;">
     <a href="/main">Main</a>
@@ -85,12 +88,16 @@
     <a href="/catalog">Catalog</a>
 </footer>
 
-<script>
-    var hidden = document.getElementsByClassName("hide")[0];
-    hidden.addEventListener("mouseover", function(e){
-        e.target.className = "";
-    });
-
-</script>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="script.js"></script>
 </html>
