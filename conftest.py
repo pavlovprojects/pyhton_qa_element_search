@@ -1,46 +1,46 @@
 import pytest
+import os
+
 from selenium import webdriver
 
 
+def driver_factory(browser):
+    if browser == "chrome":
+        driver = webdriver.Chrome(executable_path="drivers/chromedriver")
+    elif browser == "firefox":
+        driver = webdriver.Firefox(executable_path="drivers/geckodriver")
+    elif browser == "yandex":
+        driver = webdriver.Chrome(executable_path="drivers/yandexdriver")
+    elif browser == "opera":
+        driver = webdriver.Opera(executable_path="drivers/operadriver")
+    elif browser == "safari":
+        driver = webdriver.Safari()
+    else:
+        raise Exception("Driver not supported")
+    return driver
+
+
 def pytest_addoption(parser):
-    parser.addoption("--browser", "-B", action="store", default="chrome", help="choose your browser")
-    parser.addoption("--url", "-U", action="store", default="https://demo.opencart.com/", help="choose your browser")
+    parser.addoption("--browser", action="store", default="chrome")
+    parser.addoption("--url", action="store", default="https://demo.opencart.com/", help="choose your browser")
 
 
 @pytest.fixture
 def browser(request):
-    browser_param = request.config.getoption("--browser")
-    if browser_param == "chrome":
-        driver = webdriver.Chrome(executable_path="drivers/chromedriver79")
-    elif browser_param == "firefox":
-        driver = webdriver.Firefox(executable_path="drivers/geckodriver")
-    # Для MacOS
-    # elif browser_param == "safari":
-    #     driver = webdriver.Safari()
-    else:
-        raise Exception(f"{request.param} is not supported!")
-
-    driver.implicitly_wait(20)
+    browser = request.config.getoption("--browser")
+    url = request.config.getoption("--url")
+    driver = driver_factory(browser)
+    driver.maximize_window()
+    driver.implicitly_wait(5)
     request.addfinalizer(driver.close)
-    driver.get(request.config.getoption("--url"))
-
+    driver.get(url)
     return driver
 
 
-@pytest.fixture(params=["chrome", "safari", "firefox"])
+@pytest.fixture(params=["chrome", "firefox", "opera"])
 def parametrize_browser(request):
-    browser_param = request.param
-    if browser_param == "chrome":
-        driver = webdriver.Chrome()
-    elif browser_param == "firefox":
-        driver = webdriver.Firefox()
-    elif browser_param == "safari":
-        driver = webdriver.Safari()
-    else:
-        raise Exception(f"{request.param} is not supported!")
-
-    driver.implicitly_wait(20)
+    driver = driver_factory(request.param)
+    driver.implicitly_wait(5)
     request.addfinalizer(driver.quit)
     driver.get(request.config.getoption("--url"))
-
     return driver
